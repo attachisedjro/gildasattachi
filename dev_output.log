@@ -1,0 +1,13 @@
+> next dev
+▲ Next.js 16.2.2 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://172.29.86.143:3001
+✓ Ready in 499ms
+[?25h
+⚠ Port 3000 is in use by process 2066, using available port 3001 instead.
+⨯ Another next dev server is already running.
+- Local:        http://localhost:3000
+- PID:          2066
+- Dir:          /Users/gildasattachi/Desktop/CodeHub/gildasattachi.com/v2
+- Log:          .next/dev/logs/next-development.log
+Run kill 2066 to stop it.
