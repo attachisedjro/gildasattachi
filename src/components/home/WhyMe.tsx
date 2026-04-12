@@ -3,38 +3,31 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
-const differentiators = [
-  {
-    num: "01",
-    title: "Deux marchés.\nUn seul standard.",
-    text: "10 ans entre l'Afrique de l'Ouest et le Québec. Les contextes changent, l'exigence de résultats, non.",
-    stat: "+50%",
-    statLabel: "engagement moyen sur ses mandats",
+const content = {
+  fr: {
+    title: "Pourquoi moi ?",
+    subtitle: "Ce qui distingue mon approche de la communication stratégique.",
+    items: [
+      { num: "01", title: "Deux marchés.\nUn seul standard.", text: "10 ans entre l'Afrique de l'Ouest et le Québec. Les contextes changent, l'exigence de résultats, non.", stat: "+50%", statLabel: "engagement moyen sur ses mandats" },
+      { num: "02", title: "Interne et externe\nsans frontière.", text: "Je couvre les deux périmètres sans silo. Ce que je dis à l'externe est cohérent avec ce que vivent les employés.", stat: "360°", statLabel: "couverture de la communication" },
+      { num: "03", title: "Des credentials\nancrés dans la pratique.", text: "Membre de l'Ordre des administrateurs agréés du Québec, MBA ESG-UQAM, certifié Change Management Practitioner - Prosci.", stat: "3×", statLabel: "certifications de haut niveau" },
+      { num: "04", title: "La stratégie et\nl'exécution, ensemble.", text: "Je construis les plans et je les mets en œuvre. Pas de remise de rapport sans suivi de résultats.", stat: "95%", statLabel: "fidélisation client SPIRO" },
+    ],
   },
-  {
-    num: "02",
-    title: "Interne et externe\nsans frontière.",
-    text: "Je couvre les deux périmètres sans silo. Ce que je dis à l'externe est cohérent avec ce que vivent les employés.",
-    stat: "360°",
-    statLabel: "couverture de la communication",
+  en: {
+    title: "Why me?",
+    subtitle: "What sets my approach to strategic communications apart.",
+    items: [
+      { num: "01", title: "Two markets.\nOne standard.", text: "10 years between West Africa and Quebec. Contexts change. The demand for results does not.", stat: "+50%", statLabel: "average engagement across mandates" },
+      { num: "02", title: "Internal and external\nwithout silos.", text: "I cover both perimeters without walls. What I communicate externally is aligned with what employees actually experience.", stat: "360°", statLabel: "communications coverage" },
+      { num: "03", title: "Credentials\nrooted in practice.", text: "Member of the Ordre des administrateurs agréés du Québec, MBA ESG-UQAM, certified Change Management Practitioner - Prosci.", stat: "3×", statLabel: "high-level certifications" },
+      { num: "04", title: "Strategy and\nexecution, together.", text: "I build the plans and implement them. No deliverable without follow-up on results.", stat: "95%", statLabel: "client retention at SPIRO" },
+    ],
   },
-  {
-    num: "03",
-    title: "Des credentials\nancrés dans la pratique.",
-    text: "Membre de l'Ordre des administrateurs agréés du Québec, MBA ESG-UQAM, certifié Change Management Practitioner - Prosci.",
-    stat: "3×",
-    statLabel: "certifications de haut niveau",
-  },
-  {
-    num: "04",
-    title: "La stratégie et\nl'exécution, ensemble.",
-    text: "Je construis les plans et je les mets en œuvre. Pas de remise de rapport sans suivi de résultats.",
-    stat: "95%",
-    statLabel: "fidélisation client SPIRO",
-  },
-];
+};
 
-function Item({ item, index }: { item: typeof differentiators[0]; index: number }) {
+type DiffItem = { num: string; title: string; text: string; stat: string; statLabel: string };
+function Item({ item, index }: { item: DiffItem; index: number }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
@@ -179,7 +172,8 @@ function Item({ item, index }: { item: typeof differentiators[0]; index: number 
   );
 }
 
-export function WhyMe() {
+export function WhyMe({ locale = "fr" }: { locale?: "fr" | "en" }) {
+  const c = content[locale];
   return (
     <section className="section-padding bg-[#fdf9f6]">
       <div className="container-custom">
@@ -191,16 +185,16 @@ export function WhyMe() {
               className="font-display font-bold text-[#26170c] leading-tight"
               style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}
             >
-              Pourquoi moi ?
+              {c.title}
             </h2>
           </div>
           <p className="text-[#81756e] text-sm max-w-xs leading-relaxed">
-            Ce qui distingue mon approche de la communication stratégique.
+            {c.subtitle}
           </p>
         </div>
 
         {/* Items */}
-        {differentiators.map((item, i) => (
+        {c.items.map((item, i) => (
           <Item key={item.num} item={item} index={i} />
         ))}
       </div>

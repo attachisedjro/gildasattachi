@@ -3,36 +3,25 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const testimonials = [
-  {
-    quote: "What I've consistently appreciated is his ability to combine strategic thinking with sharp execution. He always had a clear sense of direction, knew how to rally others around a vision, and most importantly,he delivered.",
-    name: "Nkurunziza K. Dominique",
-    role: "VP Operations @ Djamo (YC W21)",
-    context: "Supérieur direct chez Yellowbet et SPIRO",
-  },
-  {
-    quote: "Sa capacité d'adaptation, sa recherche constante de bonnes et de nouvelles pratiques, ainsi que sa bonhomie, font de lui un allié de choix et de poids dans une équipe.",
-    name: "Doria Rey",
-    role: "Responsable des opérations, Country Manager",
-    context: "Supérieur direct chez Open SI",
-  },
-  {
-    quote: "Il possède une vision stratégique forte et une capacité à mobiliser les équipes autour d'initiatives à fort impact. Bilingue et doté d'excellentes compétences rédactionnelles, il sait adapter son discours aux différents publics.",
-    name: "Brice Houndonougbo",
-    role: "CFO · CEO Bénin chez SPIRO",
-    context: "Supérieur direct chez SPIRO",
-  },
-  {
-    quote: "Jamais avare de nouvelles idées, Gildas n'a pas usurpé son surnom de 'couteau suisse'. Capable d'éditer une stratégie digitale, de la mettre en action, d'analyser les KPIs,mais aussi de tourner derrière une caméra, de prendre des photos, de réaliser des visuels.",
-    name: "Morel Hounkpevi",
-    role: "Digital Manager @ SOBEBRA",
-    context: "Supérieur direct chez SOBEBRA",
-  },
-];
+const testimonials = {
+  fr: [
+    { quote: "What I've consistently appreciated is his ability to combine strategic thinking with sharp execution. He always had a clear sense of direction, knew how to rally others around a vision, and most importantly, he delivered.", name: "Nkurunziza K. Dominique", role: "VP Operations @ Djamo (YC W21)", context: "Supérieur direct chez Yellowbet et SPIRO" },
+    { quote: "Sa capacité d'adaptation, sa recherche constante de bonnes et de nouvelles pratiques, ainsi que sa bonhomie, font de lui un allié de choix et de poids dans une équipe.", name: "Doria Rey", role: "Responsable des opérations, Country Manager", context: "Supérieur direct chez Open SI" },
+    { quote: "Il possède une vision stratégique forte et une capacité à mobiliser les équipes autour d'initiatives à fort impact. Bilingue et doté d'excellentes compétences rédactionnelles, il sait adapter son discours aux différents publics.", name: "Brice Houndonougbo", role: "CFO · CEO Bénin chez SPIRO", context: "Supérieur direct chez SPIRO" },
+    { quote: "Jamais avare de nouvelles idées, Gildas n'a pas usurpé son surnom de 'couteau suisse'. Capable d'éditer une stratégie digitale, de la mettre en action, d'analyser les KPIs, mais aussi de tourner derrière une caméra, de prendre des photos, de réaliser des visuels.", name: "Morel Hounkpevi", role: "Digital Manager @ SOBEBRA", context: "Supérieur direct chez SOBEBRA" },
+  ],
+  en: [
+    { quote: "What I've consistently appreciated is his ability to combine strategic thinking with sharp execution. He always had a clear sense of direction, knew how to rally others around a vision, and most importantly, he delivered.", name: "Nkurunziza K. Dominique", role: "VP Operations @ Djamo (YC W21)", context: "Direct manager at Yellowbet and SPIRO" },
+    { quote: "His adaptability, constant search for best and new practices, and his warmth make him a valuable and trusted ally in any team.", name: "Doria Rey", role: "Head of Operations, Country Manager", context: "Direct manager at Open SI" },
+    { quote: "He has a strong strategic vision and the ability to rally teams around high-impact initiatives. Bilingual and gifted with excellent writing skills, he knows how to tailor his message to different audiences.", name: "Brice Houndonougbo", role: "CFO · CEO Benin at SPIRO", context: "Direct manager at SPIRO" },
+    { quote: "Never short of new ideas, Gildas has earned his nickname 'Swiss army knife'. Able to craft a digital strategy, execute it, analyze KPIs, but also shoot behind a camera, take photos, and create visuals.", name: "Morel Hounkpevi", role: "Digital Manager @ SOBEBRA", context: "Direct manager at SOBEBRA" },
+  ],
+};
 
-export function Testimonials() {
+export function Testimonials({ locale = "fr" }: { locale?: "fr" | "en" }) {
+  const items = testimonials[locale];
   const [active, setActive] = useState(0);
-  const t = testimonials[active];
+  const t = items[active];
 
   return (
     <section className="section-padding bg-[#fdf9f6]">
@@ -43,12 +32,12 @@ export function Testimonials() {
               className="font-display font-bold text-[#26170c] leading-tight"
               style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)" }}
             >
-              Ce qu'ils disent.
+              {locale === "en" ? "What they say." : "Ce qu'ils disent."}
             </h2>
           </div>
           {/* Dots navigation */}
           <div className="flex gap-3">
-            {testimonials.map((_, i) => (
+            {items.map((_: unknown, i: number) => (
               <button
                 key={i}
                 onClick={() => setActive(i)}
@@ -58,7 +47,7 @@ export function Testimonials() {
                   height: "3px",
                   background: i === active ? "#775a19" : "#d2c4bc",
                 }}
-                aria-label={`Témoignage ${i + 1}`}
+                aria-label={`${locale === "en" ? "Testimonial" : "Témoignage"} ${i + 1}`}
               />
             ))}
           </div>
@@ -108,7 +97,7 @@ export function Testimonials() {
 
           {/* Cartes latérales,autres témoignages */}
           <div className="lg:col-span-4 flex flex-col gap-3">
-            {testimonials.map((item, i) => (
+            {items.map((item, i) => (
               <button
                 key={i}
                 onClick={() => setActive(i)}

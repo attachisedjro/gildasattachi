@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# sanity runtime
+.sanity/
+
+# v1 build artifacts
+/dist/
+
+# logs
+dev_output.log

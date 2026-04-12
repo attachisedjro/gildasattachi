@@ -5,17 +5,41 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
-const navLinks = [
-  { name: "Dossier",      href: "/dossier" },
-  { name: "Publications", href: "/publications" },
-  { name: "Blog",         href: "/blog" },
-  { name: "Contact",      href: "/contact" },
-];
-
 export function Navbar() {
-  const [isOpen, setIsOpen]       = useState(false);
-  const [scrolled, setScrolled]   = useState(false);
-  const pathname                  = usePathname();
+  const [isOpen, setIsOpen]     = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname                = usePathname();
+
+  const isEn = pathname?.startsWith("/en");
+
+  const navLinks = isEn
+    ? [
+        { name: "Dossier",      href: "/en/dossier" },
+        { name: "Publications", href: "/en/publications" },
+        { name: "Blog",         href: "/en/blog" },
+        { name: "Contact",      href: "/en/contact" },
+      ]
+    : [
+        { name: "Dossier",      href: "/dossier" },
+        { name: "Publications", href: "/publications" },
+        { name: "Blog",         href: "/blog" },
+        { name: "Contact",      href: "/contact" },
+      ];
+
+  const ctaLabel = isEn ? "Get in touch" : "Me contacter";
+  const ctaHref  = isEn ? "/en/contact" : "/contact";
+  const logoHref = isEn ? "/en" : "/";
+
+  const switchPath = (() => {
+    if (isEn) {
+      const without = pathname?.replace(/^\/en/, "") || "";
+      if (without.startsWith("/blog/")) return "/blog";
+      return without || "/";
+    } else {
+      if (pathname?.startsWith("/blog/")) return "/en/blog";
+      return "/en" + (pathname === "/" ? "" : pathname);
+    }
+  })();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
@@ -23,7 +47,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Ferme le menu sur changement de route
   useEffect(() => { setIsOpen(false); }, [pathname]);
 
   return (
@@ -40,7 +63,7 @@ export function Navbar() {
       <div className="container-custom flex justify-between items-center">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href={logoHref} className="flex items-center gap-3 group">
           <div
             className="bg-[#26170c] text-white font-display font-bold w-9 h-9 flex items-center justify-center text-base transition-transform group-hover:scale-105"
             style={{ borderRadius: "2px" }}
@@ -67,12 +90,32 @@ export function Navbar() {
               </Link>
             );
           })}
+
+          {/* Switcher FR / EN */}
+          <div className="flex items-center gap-1 ml-2 border border-[#d2c4bc] px-3 py-1.5" style={{ borderRadius: "2px" }}>
+            <Link
+              href={isEn ? switchPath : pathname || "/"}
+              className="text-[10px] font-bold tracking-[0.15em] transition-colors"
+              style={{ color: !isEn ? "#26170c" : "#81756e" }}
+            >
+              FR
+            </Link>
+            <span className="text-[#d2c4bc] text-[10px] mx-0.5">|</span>
+            <Link
+              href={isEn ? pathname || "/en" : switchPath}
+              className="text-[10px] font-bold tracking-[0.15em] transition-colors"
+              style={{ color: isEn ? "#26170c" : "#81756e" }}
+            >
+              EN
+            </Link>
+          </div>
+
           <Link
-            href="/contact"
-            className="ml-4 bg-[#26170c] text-white text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 transition-colors hover:bg-[#3d2b1f]"
+            href={ctaHref}
+            className="ml-2 bg-[#26170c] text-white text-[10px] font-bold tracking-[0.2em] uppercase px-5 py-2.5 transition-colors hover:bg-[#3d2b1f]"
             style={{ borderRadius: "2px" }}
           >
-            Me contacter
+            {ctaLabel}
           </Link>
         </div>
 
@@ -98,13 +141,19 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-          <div className="mt-auto">
+          <div className="mt-auto flex flex-col gap-4">
+            {/* Mobile switcher */}
+            <div className="flex items-center gap-3">
+              <Link href={isEn ? switchPath : pathname || "/"} className="text-[11px] font-bold tracking-[0.2em] uppercase" style={{ color: !isEn ? "#26170c" : "#81756e" }}>FR</Link>
+              <span className="text-[#d2c4bc]">|</span>
+              <Link href={isEn ? pathname || "/en" : switchPath} className="text-[11px] font-bold tracking-[0.2em] uppercase" style={{ color: isEn ? "#26170c" : "#81756e" }}>EN</Link>
+            </div>
             <Link
-              href="/contact"
-              className="block w-full text-center bg-[#26170c] text-white text-[11px] font-bold tracking-[0.25em] uppercase py-5 mt-10"
+              href={ctaHref}
+              className="block w-full text-center bg-[#26170c] text-white text-[11px] font-bold tracking-[0.25em] uppercase py-5"
               style={{ borderRadius: "2px" }}
             >
-              Me contacter
+              {ctaLabel}
             </Link>
           </div>
         </div>

@@ -4,27 +4,47 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
-const marqueeItems = [
-  "Communication 360°",
-  "Marque employeur",
-  "Relations publiques",
-  "Bilingue FR-EN",
-  "Membre de l'Ordre des Adm. A.",
-  "Certifié Change Management Practitioner - Prosci",
-  "Gestion du changement",
-  "Communication interne",
-];
+const content = {
+  fr: {
+    marquee: ["Communication 360°", "Marque employeur", "Relations publiques", "Bilingue FR-EN", "Membre de l'Ordre des Adm. A.", "Certifié Change Management Practitioner - Prosci", "Gestion du changement", "Communication interne"],
+    h1: ["Dix ans à bâtir des ponts", "entre les organisations"],
+    h1italic: "et leurs publics.",
+    subtitle: "Spécialiste de la communication stratégique, je traduis les enjeux organisationnels en récits cohérents et en actions mesurables. 10 ans d'expérience entre le Québec et l'Afrique de l'Ouest, en communication interne, marque employeur et relations publiques.",
+    ctaPrimary: "Voir mon dossier",
+    ctaPrimaryHref: "/dossier",
+    ctaSecondary: "Me contacter",
+    ctaSecondaryHref: "/contact",
+    stats: [
+      { val: "10 ans+", label: "d'expérience" },
+      { val: "+70 %",   label: "ouverture infolettre · NMG" },
+      { val: "50+",     label: "commandites gérées · NMG" },
+      { val: "+86 %",   label: "croissance followers · SOBEBRA" },
+      { val: "+50 %",   label: "engagement · Yellowbet" },
+      { val: "95 %",    label: "fidélisation · SPIRO" },
+    ],
+  },
+  en: {
+    marquee: ["360° Communications", "Employer Branding", "Public Relations", "Bilingual FR-EN", "Member of the Ordre des Adm. A.", "Certified Change Management Practitioner - Prosci", "Change Management", "Internal Communications"],
+    h1: ["Ten years building bridges", "between organizations"],
+    h1italic: "and their audiences.",
+    subtitle: "Strategic communications specialist translating organizational challenges into coherent narratives and measurable actions. 10 years of experience between Quebec and West Africa, in internal communications, employer branding, and public relations.",
+    ctaPrimary: "View my portfolio",
+    ctaPrimaryHref: "/en/dossier",
+    ctaSecondary: "Get in touch",
+    ctaSecondaryHref: "/en/contact",
+    stats: [
+      { val: "10 yrs+", label: "of experience" },
+      { val: "+70%",    label: "newsletter open rate · NMG" },
+      { val: "50+",     label: "sponsorships managed · NMG" },
+      { val: "+86%",    label: "follower growth · SOBEBRA" },
+      { val: "+50%",    label: "engagement · Yellowbet" },
+      { val: "95%",     label: "retention · SPIRO" },
+    ],
+  },
+};
 
-const stats = [
-  { val: "10 ans+", label: "d'expérience" },
-  { val: "+70 %",   label: "ouverture infolettre · NMG" },
-  { val: "50+",     label: "commandites gérées · NMG" },
-  { val: "+86 %",   label: "croissance followers · SOBEBRA" },
-  { val: "+50 %",   label: "engagement · Yellowbet" },
-  { val: "95 %",    label: "fidélisation · SPIRO" },
-];
-
-export function Hero() {
+export function Hero({ locale = "fr" }: { locale?: "fr" | "en" }) {
+  const c = content[locale];
   return (
     <>
       <section className="grain relative min-h-screen flex items-center overflow-hidden bg-[#fdf9f6] pt-28 pb-20">
@@ -52,9 +72,9 @@ export function Hero() {
                 className="font-display font-bold text-[#26170c] leading-[0.88] tracking-[-0.04em] mb-8"
                 style={{ fontSize: "clamp(3rem, 7vw, 6.5rem)" }}
               >
-                Dix ans à bâtir des ponts<br />
-                entre les organisations<br />
-                <span className="italic font-light text-stroke">et leurs publics.</span>
+                {c.h1[0]}<br />
+                {c.h1[1]}<br />
+                <span className="italic font-light text-stroke">{c.h1italic}</span>
               </motion.h1>
 
               {/* Sous-titre */}
@@ -64,10 +84,7 @@ export function Hero() {
                 transition={{ duration: 0.7, delay: 0.3 }}
                 className="text-[#4f453f] text-lg leading-relaxed mb-10 max-w-lg"
               >
-                Spécialiste de la communication stratégique, je traduis les enjeux
-                organisationnels en récits cohérents et en actions mesurables.
-                10 ans d'expérience entre le Québec et l'Afrique de l'Ouest,
-                en communication interne, marque employeur et relations publiques.
+                {c.subtitle}
               </motion.p>
 
               {/* CTAs */}
@@ -78,18 +95,18 @@ export function Hero() {
                 className="flex flex-wrap gap-3 mb-16"
               >
                 <Link
-                  href="/dossier"
+                  href={c.ctaPrimaryHref}
                   className="inline-block bg-[#26170c] text-white px-7 py-3.5 text-[11px] font-bold tracking-[0.2em] uppercase hover:bg-[#3d2b1f] transition-colors"
                   style={{ borderRadius: "2px" }}
                 >
-                  Voir mon dossier
+                  {c.ctaPrimary}
                 </Link>
                 <Link
-                  href="/contact"
+                  href={c.ctaSecondaryHref}
                   className="inline-block border border-[#d2c4bc] text-[#26170c] px-7 py-3.5 text-[11px] font-bold tracking-[0.2em] uppercase hover:border-[#775a19] hover:text-[#775a19] transition-colors"
                   style={{ borderRadius: "2px" }}
                 >
-                  Me contacter
+                  {c.ctaSecondary}
                 </Link>
               </motion.div>
 
@@ -100,7 +117,7 @@ export function Hero() {
                 transition={{ duration: 0.7, delay: 0.6 }}
                 className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 pt-8 border-t border-[#d2c4bc]/50"
               >
-                {stats.map((s) => (
+                {c.stats.map((s) => (
                   <div key={s.label}>
                     <div className="font-mono font-bold text-2xl text-[#26170c] tracking-tight leading-none mb-1">
                       {s.val}
@@ -168,7 +185,7 @@ export function Hero() {
       {/* ── Marquee ── */}
       <section className="py-10 bg-[#26170c] overflow-hidden">
         <div className="flex whitespace-nowrap animate-marquee">
-          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+          {[...c.marquee, ...c.marquee].map((item, i) => (
             <span key={i} className="flex items-center">
               <span className="text-[#e9c176]/30 font-display text-xl tracking-widest mx-8">•</span>
               <span className="text-white font-display text-lg uppercase tracking-[0.2em]">{item}</span>
