@@ -131,7 +131,7 @@ export function Navbar() {
 
       {/* Mobile overlay */}
       {isOpen && (
-        <div className="fixed inset-0 bg-[#fdf9f6] z-40 lg:hidden flex flex-col px-8 pt-28 pb-16 gap-0">
+        <div className="fixed inset-0 bg-[#fdf9f6] z-[200] lg:hidden flex flex-col px-8 pt-28 pb-16 gap-0">
           {navLinks.map((link) => (
             <Link
               key={link.name}
