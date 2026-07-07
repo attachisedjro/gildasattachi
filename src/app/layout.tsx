@@ -24,18 +24,19 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://gildasattachi.com'),
   title: {
-    default: 'Gildas Attachi, Adm. A - Spécialiste de la communication stratégique | Montréal, Québec',
+    default: 'Gildas Attachi, Adm. A - Communications et marketing | Montréal, Québec',
     template: '%s | Gildas Attachi'
   },
-  description: "Professionnel senior en communications au Québec. 10 ans d'expérience en communication interne, marque employeur, RP et stratégie corporative. Adm. A., certifié Prosci.",
+  description: "Conseiller en communications et en marketing au Québec. Plans de communication, campagnes d'acquisition, contenu et événements, et des outils numériques conçus avec l'IA. Adm. A., praticien certifié Prosci, MBA en cours (ESG-UQAM).",
   keywords: [
     'conseiller communications Montréal',
-    'communication interne Québec',
-    'marque employeur Canada',
-    'gestion du changement Prosci',
     'communications stratégiques Québec',
-    'communication externe',
-    'Adm A communications'
+    'marketing et acquisition Québec',
+    'communications événementielles',
+    'gestion du changement Prosci',
+    'stratégie de contenu et SEO',
+    'marque employeur Canada',
+    'Adm A communications marketing'
   ],
   openGraph: {
     type: 'website',
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     alternateLocale: 'en_CA',
     url: 'https://gildasattachi.com',
     siteName: 'Gildas Attachi',
-    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Gildas Attachi - Spécialiste de la communication stratégique' }]
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Gildas Attachi - Communications et marketing' }]
   },
   twitter: { card: 'summary_large_image' },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true } }

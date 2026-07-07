@@ -9,20 +9,26 @@ const domains = [
   {
     num: "01",
     title: "Communication interne\n& marque employeur",
-    description: "Aligner les équipes, clarifier les messages, faire vivre la culture. J'ai structuré des communications internes dans des organisations de 50 à 1 800 employés, déployé des stratégies marque employeur, et accompagné des directions sur des enjeux sensibles.",
-    tags: ["Communication interne", "Marque employeur", "Gestion du changement", "Engagement employé", "Communication de crise"],
+    description: "Aligner les équipes, clarifier les messages, faire vivre la culture. J'ai structuré des communications internes dans des organisations de 50 à 1 800 employés, produit les outils qui portent la voix de l'entreprise (guides de prise de parole, rapport annuel, rapport ESG), et accompagné des directions sur des enjeux sensibles.",
+    tags: ["Communication interne", "Marque employeur", "Rapport annuel & ESG", "Gestion du changement", "Communication de crise"],
   },
   {
     num: "02",
     title: "Communication externe\n& relations publiques",
-    description: "Positionner une organisation, gérer sa réputation, parler aux bons publics. J'ai piloté des campagnes 360°, coordonné des relations médias, préparé des porte-paroles, et géré des situations de crise.",
-    tags: ["Relations médias", "Campagnes 360°", "Gestion de réputation", "Préparation porte-paroles", "Communication corporative"],
+    description: "Positionner une organisation, gérer sa réputation, parler aux bons publics. J'ai piloté des campagnes 360°, coordonné des relations médias, préparé des porte-paroles, géré des situations de crise, et orchestré des communications événementielles de bout en bout, du brief aux fournisseurs jusqu'à la coordination sur place.",
+    tags: ["Relations médias", "Campagnes 360°", "Communications événementielles", "Gestion de fournisseurs", "Préparation porte-paroles"],
   },
   {
     num: "03",
     title: "Marketing numérique\n& contenu",
-    description: "Créer de l'engagement, mesurer les résultats, optimiser ce qui fonctionne. J'ai géré des communautés sur plusieurs marchés, déployé des campagnes multicanales, et utilisé les données pour ajuster les stratégies.",
+    description: "Créer de l'engagement, mesurer les résultats, optimiser ce qui fonctionne. J'ai géré des communautés sur plusieurs marchés, déployé des campagnes multicanales, utilisé les données pour ajuster les stratégies, et bâti une stratégie d'influenceurs avec des agences externes.",
     tags: ["Stratégie de contenu", "Médias sociaux", "Campagnes multicanales", "Analytics", "SEO & Ads"],
+  },
+  {
+    num: "04",
+    title: "Intelligence artificielle\nappliquée",
+    description: "Concevoir et mettre en ligne mes propres produits logiciels avec l'IA. Ronde Sécurité, une plateforme d'inspection de véhicules commerciaux au Québec, et Le Dépôt, une plateforme pour les professionnels de la communication et les TPE, avec environ 300 membres.",
+    tags: ["Next.js", "Vercel", "API Claude", "SEO & GEO", "Automatisation"],
   },
 ];
 
@@ -43,16 +49,17 @@ const experiences: {
 }[] = [
   {
     period: "Fév. 2025 -présent",
-    title: "Conseiller principal, Communication 360",
+    title: "Conseiller principal, Communication 360°",
     org: "Nouveau Monde Graphite (NMG)",
     sector: "Secteur minier · Québec",
     current: true,
     points: [
-      "Stratégies de communication internes et externes alignées sur les objectifs d'affaires",
-      "Stratégie marque employeur complète : visuels recrutement, templates, kits événementiels",
-      "Rédaction de contenus corporatifs : communiqués, messages clés, présentations",
-      "Rôle-conseil auprès des directions sur les communications stratégiques et sensibles",
-      "Gestion du programme de dons et commandites",
+      "Élaboration et déploiement de plans de communication interne et externe pour les initiatives et programmes de l'organisation",
+      "Production d'outils corporatifs : infolettres, présentation d'accueil, one-pagers, guides de prise de parole, contenus web et médias sociaux",
+      "Contribution au rapport annuel et au rapport ESG de l'entreprise",
+      "Communications événementielles : plans, outils promotionnels, coordination des photographes, et gestion du programme de dons et commandites",
+      "Coordination de fournisseurs et de pigistes : brief, devis, suivi des livrables",
+      "Rôle-conseil auprès des directions et cohérence des messages à l'échelle de l'organisation",
     ],
     results: [
       { val: "+70 %", label: "Ouverture infolettre interne" },
@@ -123,6 +130,7 @@ const experiences: {
       "16 pages réseaux sociaux -croissance de 86 % des followers",
       "Campagnes 360° et rebranding de marques panafricaines",
       "Supervision terrain : production vidéo, événements corporatifs",
+      "Collaboration avec des agences externes et mise en place d'une stratégie d'influenceurs",
     ],
     results: [
       { val: "300K+", label: "Abonnés cumulés (+86 %)" },
@@ -183,13 +191,13 @@ const experiences: {
 ];
 
 const education = [
-  { degree: "MBA, Conseil en management", school: "ESG-UQAM", period: "En cours · automne 2025" },
+  { degree: "MBA, Conseil en management", school: "ESG-UQAM", period: "En cours · décembre 2027" },
   { degree: "Certification Prosci -Change Management Practitioner", school: "Prosci", period: "Avril 2026" },
   { degree: "Maîtrise, Marketing et Communications", school: "ESEF, Université Mohammed 1er", period: "2024" },
   { degree: "Maîtrise, Gestion des ressources humaines", school: "UPI-ONM", period: "2015 · reconnue MIFI" },
 ];
 
-const tools = ["HubSpot", "Hootsuite", "Mailchimp", "GA4", "Google Ads", "Canva", "WordPress", "CapCut", "Suite Microsoft & Google", "Claude · ChatGPT · Copilot"];
+const tools = ["HubSpot", "Cyberimpact", "Hootsuite", "Mailchimp", "GA4", "Google Ads", "Canva", "WordPress", "CapCut", "Zoom", "Suite Microsoft & Google", "Claude · ChatGPT · Copilot", "Next.js", "Vercel"];
 
 /* ─── COMPOSANTS ─── */
 function DomainRow({ domain, index }: { domain: typeof domains[0]; index: number }) {
@@ -241,7 +249,7 @@ export default function DossierPage() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.3 }} className="lg:col-span-4">
               <p className="text-white/60 text-lg leading-relaxed border-l-2 border-[#e9c176] pl-6">
-                Trois domaines d'expertise. Dix ans de résultats mesurés.
+                Quatre domaines d'expertise. Dix ans de résultats mesurés.
               </p>
             </motion.div>
           </div>
@@ -254,7 +262,7 @@ export default function DossierPage() {
           <h2 className="font-display font-bold text-[#26170c] leading-tight tracking-[-0.03em] mb-2"
             style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)" }}>Ce que je fais.</h2>
           <p className="text-[#81756e] text-sm mb-12 max-w-md">
-            Trois domaines où j'interviens depuis plus de dix ans.
+            Quatre domaines où j'interviens depuis plus de dix ans.
           </p>
           {domains.map((d, i) => <DomainRow key={d.num} domain={d} index={i} />)}
           <motion.blockquote initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
@@ -379,8 +387,9 @@ export default function DossierPage() {
                 ))}
               </div>
               <div className="mt-12 pt-10 border-t border-white/10">
-                <h3 className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-[#e9c176] mb-4">Bénévolat</h3>
+                <h3 className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-[#e9c176] mb-4">Engagement envers différentes causes</h3>
                 <div className="flex flex-col gap-2 text-white/60 text-sm">
+                  <span>Fonds Héritage pour l&apos;Environnement -bénévole depuis avril 2026</span>
                   <span>Jeux de Montréal 2024</span>
                   <span>Rotary International -membre actif depuis 2017</span>
                 </div>

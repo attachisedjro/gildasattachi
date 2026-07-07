@@ -4,8 +4,8 @@ import { Testimonials } from "@/components/home/Testimonials";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Gildas Attachi, Adm. A — Strategic Communications Specialist | Montreal, Quebec",
-  description: "Strategic communications specialist with 10+ years of experience between Quebec and West Africa. Internal communications, employer branding, public relations.",
+  title: "Gildas Attachi, Adm. A — Communications & Marketing | Montreal, Quebec",
+  description: "Communications and marketing advisor. Communication plans, acquisition campaigns, content and events, plus digital tools built with AI. Adm. A., certified Prosci practitioner, MBA in progress (ESG-UQAM).",
 };
 
 export default function HomeEN() {
@@ -30,7 +30,7 @@ export default function HomeEN() {
             </div>
             <div className="max-w-sm">
               <p className="text-white/60 text-lg leading-relaxed mb-8">
-                Available for strategic consulting mandates and senior communications opportunities.
+                Available for senior communications and marketing opportunities, with AI as an accelerator.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link

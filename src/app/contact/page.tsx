@@ -81,7 +81,7 @@ export default function ContactPage() {
             </div>
             <div className="pt-8 border-t border-[#d2c4bc]/30">
               <p className="text-[#81756e] text-sm leading-relaxed">
-                Spécialiste de la communication stratégique. Basé à Montréal, Québec.
+                Communications et marketing. Basé à Montréal, Québec.
               </p>
             </div>
           </motion.div>

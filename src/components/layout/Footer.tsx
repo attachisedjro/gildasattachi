@@ -26,7 +26,7 @@ export function Footer() {
               </span>
             </div>
             <p className="text-white/50 text-base leading-relaxed max-w-xs">
-              Spécialiste de la communication stratégique. Montréal, Québec.
+              Communications et marketing. Montréal, Québec.
             </p>
           </div>
 

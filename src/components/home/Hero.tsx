@@ -6,10 +6,10 @@ import Image from "next/image";
 
 const content = {
   fr: {
-    marquee: ["Communication 360°", "Marque employeur", "Relations publiques", "Bilingue FR-EN", "Membre de l'Ordre des Adm. A.", "Certifié Change Management Practitioner - Prosci", "Gestion du changement", "Communication interne"],
+    marquee: ["Communications stratégiques", "Marketing et acquisition", "Produits bâtis avec l'IA", "Bilingue FR-EN", "Membre de l'Ordre des Adm. A.", "Certifié Change Management Practitioner - Prosci", "Communications événementielles", "CRM & automatisation"],
     h1: ["Dix ans à bâtir des ponts", "entre les organisations"],
     h1italic: "et leurs publics.",
-    subtitle: "Spécialiste de la communication stratégique, je traduis les enjeux organisationnels en récits cohérents et en actions mesurables. 10 ans d'expérience entre le Québec et l'Afrique de l'Ouest, en communication interne, marque employeur et relations publiques.",
+    subtitle: "Je passe d'un plan de communication à une campagne d'acquisition sans perdre le fil : contenu, événements, CRM, relations avec les fournisseurs. 10 ans à porter la voix d'organisations, à l'interne comme à l'externe, et à construire, avec l'IA, les outils qui manquaient encore.",
     ctaPrimary: "Voir mon dossier",
     ctaPrimaryHref: "/dossier",
     ctaSecondary: "Me contacter",
@@ -20,14 +20,14 @@ const content = {
       { val: "50+",     label: "commandites gérées · NMG" },
       { val: "+86 %",   label: "croissance followers · SOBEBRA" },
       { val: "+50 %",   label: "engagement · Yellowbet" },
-      { val: "95 %",    label: "fidélisation · SPIRO" },
+      { val: "2",       label: "produits conçus avec l'IA" },
     ],
   },
   en: {
-    marquee: ["360° Communications", "Employer Branding", "Public Relations", "Bilingual FR-EN", "Member of the Ordre des Adm. A.", "Certified Change Management Practitioner - Prosci", "Change Management", "Internal Communications"],
+    marquee: ["Strategic communications", "Marketing and acquisition", "Products built with AI", "Bilingual FR-EN", "Member of the Ordre des Adm. A.", "Certified Change Management Practitioner - Prosci", "Event communications", "CRM & automation"],
     h1: ["Ten years building bridges", "between organizations"],
     h1italic: "and their audiences.",
-    subtitle: "Strategic communications specialist translating organizational challenges into coherent narratives and measurable actions. 10 years of experience between Quebec and West Africa, in internal communications, employer branding, and public relations.",
+    subtitle: "I move from a communication plan to an acquisition campaign without losing the thread: content, events, CRM, vendor relationships. 10 years spent carrying an organization's voice, inside and out, and building, with AI, the tools that were still missing.",
     ctaPrimary: "View my portfolio",
     ctaPrimaryHref: "/en/dossier",
     ctaSecondary: "Get in touch",
@@ -38,7 +38,7 @@ const content = {
       { val: "50+",     label: "sponsorships managed · NMG" },
       { val: "+86%",    label: "follower growth · SOBEBRA" },
       { val: "+50%",    label: "engagement · Yellowbet" },
-      { val: "95%",     label: "retention · SPIRO" },
+      { val: "2",       label: "products built with AI" },
     ],
   },
 };
@@ -157,7 +157,7 @@ export function Hero({ locale = "fr" }: { locale?: "fr" | "en" }) {
                 >
                   <Image
                     src="/gildas-portrait.jpeg"
-                    alt="Gildas Attachi, Adm. A — Spécialiste en communications"
+                    alt="Gildas Attachi, Adm. A — Communications et marketing"
                     fill
                     priority
                     className="object-cover object-top"

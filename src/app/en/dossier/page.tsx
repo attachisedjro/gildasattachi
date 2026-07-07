@@ -8,20 +8,26 @@ const domains = [
   {
     num: "01",
     title: "Internal Communications\n& Employer Branding",
-    description: "Aligning teams, clarifying messages, bringing culture to life. I've structured internal communications in organizations from 50 to 1,800 employees, deployed employer branding strategies, and advised leadership on sensitive communications.",
-    tags: ["Internal Communications", "Employer Branding", "Change Management", "Employee Engagement", "Crisis Communications"],
+    description: "Aligning teams, clarifying messages, bringing culture to life. I've structured internal communications in organizations from 50 to 1,800 employees, produced the tools that carry a company's voice (talking-point guides, annual report, ESG report), and advised leadership on sensitive communications.",
+    tags: ["Internal Communications", "Employer Branding", "Annual & ESG Reporting", "Change Management", "Crisis Communications"],
   },
   {
     num: "02",
     title: "External Communications\n& Public Relations",
-    description: "Positioning an organization, managing its reputation, reaching the right audiences. I've led 360° campaigns, coordinated media relations, prepared spokespersons, and managed crisis situations.",
-    tags: ["Media Relations", "360° Campaigns", "Reputation Management", "Spokesperson Preparation", "Corporate Communications"],
+    description: "Positioning an organization, managing its reputation, reaching the right audiences. I've led 360° campaigns, coordinated media relations, prepared spokespersons, managed crisis situations, and run event communications end to end, from vendor briefs to on-site coordination.",
+    tags: ["Media Relations", "360° Campaigns", "Event Communications", "Vendor Management", "Spokesperson Preparation"],
   },
   {
     num: "03",
     title: "Digital Marketing\n& Content",
-    description: "Creating engagement, measuring results, optimizing what works. I've managed communities across multiple markets, deployed multichannel campaigns, and used data to refine strategies.",
+    description: "Creating engagement, measuring results, optimizing what works. I've managed communities across multiple markets, deployed multichannel campaigns, used data to refine strategies, and built an influencer strategy with external agencies.",
     tags: ["Content Strategy", "Social Media", "Multichannel Campaigns", "Analytics", "SEO & Ads"],
+  },
+  {
+    num: "04",
+    title: "Applied\nArtificial Intelligence",
+    description: "Designing and shipping my own software products with AI. Ronde Sécurité, a commercial vehicle inspection platform in Quebec, and Le Dépôt, a platform for communications professionals and small businesses, with around 300 members.",
+    tags: ["Next.js", "Vercel", "Claude API", "SEO & GEO", "Automation"],
   },
 ];
 
@@ -41,16 +47,17 @@ const experiences: {
 }[] = [
   {
     period: "Feb. 2025 – present",
-    title: "Senior Advisor, 360 Communications",
+    title: "Senior Advisor, 360° Communications",
     org: "Nouveau Monde Graphite (NMG)",
     sector: "Mining sector · Quebec",
     current: true,
     points: [
-      "Internal and external communication strategies aligned with business objectives",
-      "Complete employer branding strategy: recruitment visuals, templates, event kits",
-      "Corporate content writing: press releases, key messages, presentations",
-      "Advisory role to leadership on strategic and sensitive communications",
-      "Management of the donations and sponsorships program",
+      "Development and rollout of internal and external communication plans for the organization's initiatives and programs",
+      "Production of corporate tools: newsletters, onboarding presentation, one-pagers, talking-point guides, web and social content",
+      "Contribution to the company's annual report and ESG report",
+      "Event communications: plans, promotional materials, photographer coordination, and management of the donations and sponsorships program",
+      "Coordination of vendors and freelancers: briefs, quotes, deliverable follow-up",
+      "Advisory role to leadership and message consistency across the organization",
     ],
     results: [
       { val: "+70%", label: "Internal newsletter open rate" },
@@ -121,6 +128,7 @@ const experiences: {
       "16 social media pages – 86% follower growth",
       "360° campaigns and rebranding of pan-African brands",
       "Field supervision: video production, corporate events",
+      "Collaboration with external agencies and rollout of an influencer strategy",
     ],
     results: [
       { val: "300K+", label: "Cumulative followers (+86%)" },
@@ -181,13 +189,13 @@ const experiences: {
 ];
 
 const education = [
-  { degree: "MBA, Management Consulting", school: "ESG-UQAM", period: "In progress · Fall 2025" },
+  { degree: "MBA, Management Consulting", school: "ESG-UQAM", period: "In progress · December 2027" },
   { degree: "Prosci Change Management Practitioner Certification", school: "Prosci", period: "April 2026" },
   { degree: "Master's, Marketing and Communications", school: "ESEF, Mohammed 1st University", period: "2024" },
   { degree: "Master's, Human Resources Management", school: "UPI-ONM", period: "2015 · recognized MIFI" },
 ];
 
-const tools = ["HubSpot", "Hootsuite", "Mailchimp", "GA4", "Google Ads", "Canva", "WordPress", "CapCut", "Microsoft & Google Suite", "Claude · ChatGPT · Copilot"];
+const tools = ["HubSpot", "Cyberimpact", "Hootsuite", "Mailchimp", "GA4", "Google Ads", "Canva", "WordPress", "CapCut", "Zoom", "Microsoft & Google Suite", "Claude · ChatGPT · Copilot", "Next.js", "Vercel"];
 
 function DomainRow({ domain, index }: { domain: typeof domains[0]; index: number }) {
   const [open, setOpen] = useState(index === 0);
@@ -237,7 +245,7 @@ export default function DossierPageEN() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.3 }} className="lg:col-span-4">
               <p className="text-white/60 text-lg leading-relaxed border-l-2 border-[#e9c176] pl-6">
-                Three areas of expertise. Ten years of measurable results.
+                Four areas of expertise. Ten years of measurable results.
               </p>
             </motion.div>
           </div>
@@ -250,7 +258,7 @@ export default function DossierPageEN() {
           <h2 className="font-display font-bold text-[#26170c] leading-tight tracking-[-0.03em] mb-2"
             style={{ fontSize: "clamp(1.75rem, 4vw, 3rem)" }}>What I do.</h2>
           <p className="text-[#81756e] text-sm mb-12 max-w-md">
-            Three areas where I've worked for over ten years.
+            Four areas where I've worked for over ten years.
           </p>
           {domains.map((d, i) => <DomainRow key={d.num} domain={d} index={i} />)}
           <motion.blockquote initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
@@ -367,8 +375,9 @@ export default function DossierPageEN() {
                 ))}
               </div>
               <div className="mt-12 pt-10 border-t border-white/10">
-                <h3 className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-[#e9c176] mb-4">Volunteering</h3>
+                <h3 className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-[#e9c176] mb-4">Commitment to different causes</h3>
                 <div className="flex flex-col gap-2 text-white/60 text-sm">
+                  <span>Fonds Héritage pour l&apos;Environnement – volunteer since April 2026</span>
                   <span>Jeux de Montréal 2024</span>
                   <span>Rotary International – active member since 2017</span>
                 </div>

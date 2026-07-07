@@ -25,7 +25,7 @@ export default function Home() {
             </div>
             <div className="max-w-sm">
               <p className="text-white/60 text-lg leading-relaxed mb-8">
-                Disponible pour des mandats de conseil stratégique et des opportunités seniors en communications.
+                Disponible pour des opportunités seniors en communications et en marketing, avec l'IA comme accélérateur.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
